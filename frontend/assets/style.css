@@ -1,0 +1,250 @@
+a{
+    color: inherit;
+    text-decoration: inherit;
+}
+body{
+    font-family: sans-serif;
+}
+fieldset{
+    border: none;
+}
+footer{
+    align-items: center;
+    background-color: #02529c;
+    color: #fff;
+    display: flex;
+}
+header{
+    align-items: center;
+    background-color: #02529c;
+    color: #fff;
+    display: flex;
+    padding: 10px;
+    position: sticky;
+}
+li{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+main {
+    padding: 10px;
+    padding-bottom: 25px;
+}
+nav{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+table{
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+th{
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+.ahm-desc{
+    color: #666;
+}
+.ahm-fs{
+    padding: 2px;
+}
+.ahm-label{
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+}
+.ahm-label-s{
+    background-color: #02529c;
+    color: #fff;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+}
+.bad-field{
+    background-color: #ed8e9a;
+}
+.btn-big{
+    background-color: #02529c;
+    border: 5px solid #fff;
+    color: #fff;
+    font-size: inherit;
+    margin-top: 10px;
+    padding: 10px;
+    text-align: center;
+}
+.btn-small{
+    background-color: #02529c;
+    border: 5px solid #fff;
+    color: #fff;
+    font-size: inherit;
+    padding: 5px;
+    text-align: center;
+}
+
+/* Disabled buttons -------------------------------------------------- */
+.btn-big.disabled,
+.btn-big:disabled,
+.btn-small.disabled,
+.btn-small:disabled {
+    background-color: #999;   /* muted gray background */
+    cursor: not-allowed;      /* show forbidden cursor */
+    opacity: 0.6;             /* visually dim the button */
+}
+.btn-msg{
+    background-color: #02529c;
+    border: 5px solid #e0e0e0;
+    color: #fff;
+    font-size: inherit;
+    padding: 5px;
+}
+.eytt-row{
+    background-color: #e0e0e0
+}
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.hf-link{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.hf-link-kaupa{
+    background-color: #dc1e35;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.intrs{
+    max-width: 800px;
+}
+.login-form{
+    border: 5px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 275px;
+    padding: 10px;
+}
+.main-li{
+    border: 5px solid #dc1e35;
+    padding: 5px;
+}
+.mc-label{
+    display: block;
+    margin-bottom: 0.25rem;
+}
+.message-mine{
+    background-color: #02529c;
+    border-radius: 0.5rem;
+    color: #fff;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    align-self: flex-end;
+    display: inline-block;
+    max-width: 70%;
+}
+.message-theirs{
+    background-color: #e0e0e0;
+    border-radius: 0.5rem;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    align-self: flex-start;
+    display: inline-block;
+    max-width: 70%;
+}
+.name-err{
+    border: none;
+    color: #dc1e35
+}
+.new-field{
+    border: 5px solid #dc1e35;
+    max-width: 850px;
+    padding: 10px;
+}
+.own{
+    background-color: #dc1e35;
+    color: #fff;
+    padding: 5px;
+}
+.pair-n{
+    font-size: 50px;
+    text-align: center;
+}
+.pairs,
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+.pairs-btn-div{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+.prev-messages{
+    border: 5px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 10px;
+    width: 500px;
+}
+.red-btn{
+    background-color: #dc1e35;
+    border: 5px solid #fff;
+    color: #fff;
+    font-size: inherit;
+    padding: 10px;
+    text-align: center;
+}
+.red-err{
+    color: #dc1e35;
+}
+pre.settings{
+    display: inline;
+}
+.starfsfolk{
+    padding: 10px;
+}
+img.starfsfolk{
+    max-height: 100px;
+    max-width: 100px;
+}
+.time-table{
+    text-align: center;
+}
+input.tsl-inp{
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box; /* keeps the input from overflowing the cell */
+}
+td.tsl-inp{
+    min-width: 30vw; /* ensures the cell is at least 30% of the viewport width */
+}
+.ext-link{
+    color: #36c;
+}
+/* Right-to-left layout support */
+[dir="rtl"] nav,
+[dir="rtl"] header,
+[dir="rtl"] footer,
+[dir="rtl"] .flex-row,
+[dir="rtl"] .pairs-btn-div {
+    /* Use the document's RTL flow; don't flip the flex axis */
+    flex-direction: row;
+}
