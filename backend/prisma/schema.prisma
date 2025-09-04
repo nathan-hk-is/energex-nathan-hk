@@ -7,6 +7,8 @@ model users {
   name         String
   email        String  @unique
   passwordHash String
+  
+  posts posts[] @relation("poster")
 }
 model posts {
   id          String   @id @default(cuid())
@@ -14,6 +16,8 @@ model posts {
   content     String
   created_at  DateTime @default(now())
   user_id     Int
+
+  user        users @relation("poster", fields: [user_id], references: [id])
 }
 generator client {
   provider      = "prisma-client-js"

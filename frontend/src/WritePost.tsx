@@ -27,14 +27,14 @@ export default function WritePost() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     sendPost(title, content);
-      navigate("/posts", { replace: true });
+    navigate("/posts", { replace: true });
   };
-    const addDisabled = (!title || !content);
+  const addDisabled = !title || !content;
 
   return (
     <form className="message-composer" onSubmit={handleSubmit}>
@@ -45,13 +45,13 @@ export default function WritePost() {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Title"
       />
-          <br/>
+      <br />
       <textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Content"
       />
-          <br/>
+      <br />
       <button class="btn-big" type="submit" disabled={addDisabled}>
         Post
       </button>

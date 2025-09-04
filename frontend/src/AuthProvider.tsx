@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 
 interface AuthCtx {
   userId?: number;
+  name?: string;
   email?: string;
   loading: boolean;
   refresh: () => Promise<void>;
@@ -10,6 +11,7 @@ interface AuthCtx {
 }
 const AuthContext = createContext<AuthCtx>({
   userId: undefined,
+  name: undefined,
   email: undefined,
   loading: false,
   refresh: async () => {},

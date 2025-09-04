@@ -10,7 +10,13 @@ export default function Dashboard() {
         This is my test project for Energex AI, presented as a lite version of
         my app Kunnátt. - Nathan HK
       </p>
-          {userId ? <p>Logged in as: {name}, {email}</p> : <p>Not logged in</p>}
+      {userId ? (
+        <p>
+          Logged in as: {name}, {email}
+        </p>
+      ) : (
+        <p>Not logged in</p>
+      )}
       {userId ? (
         <ul>
           <li>

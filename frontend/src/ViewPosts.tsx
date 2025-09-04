@@ -60,9 +60,18 @@ export default function ViewPosts() {
   return (
     <div>
       <h1>Posts</h1>
+      <a className="btn-big" href="/write">
+        Write post
+      </a>
+      <br />
+      <br />
       {posts.map((m) => (
         <div key={m.id}>
+          <hr />
           <h2>{m.title}</h2>
+          <small>
+            {m.userName}, {m.created_at}
+          </small>
           <p>{m.content}</p>
         </div>
       ))}

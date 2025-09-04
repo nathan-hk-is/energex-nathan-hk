@@ -116,7 +116,7 @@ app_ts.post("/api/login", async (req, res) => {
   if (!ok) return res.status(401).send("Invalid credentials");
 
   const token = jwt.sign(
-    { sub: user.id, data: { email: user.email } },
+    { sub: user.id, data: { email: user.email, name: user.name } },
     JWT_SECRET,
     { expiresIn: "12h" },
   );
@@ -177,13 +177,27 @@ app_ts.get(
       }
 
       const thread = await prisma.posts.findMany({
-        orderBy: { created_at: "asc" },
+        orderBy: { created_at: "desc" },
+        include: {
+          // Adjust "user" to your relation field name if different
+          user: { select: { name: true } },
+        },
       });
 
-      // Cache the result
-      await redis.setEx(POSTS_ALL_KEY, POSTS_TTL_SECONDS, JSON.stringify(thread));
+      // Add a flat `userName` field for convenience and strip the nested `user` object
+      const withNames = thread.map((p) => ({
+        ...p,
+        userName: p.user?.name ?? null,
+      }));
 
-      res.json(thread);
+      // Cache the transformed result
+      await redis.setEx(
+        POSTS_ALL_KEY,
+        POSTS_TTL_SECONDS,
+        JSON.stringify(withNames),
+      );
+
+      res.json(withNames);
     } catch (err) {
       next(err);
     }
@@ -235,13 +249,21 @@ app_ts.get(
         return res.json(JSON.parse(cached));
       }
 
-      const post = await prisma.posts.findUnique({ where: { id: numericId } });
+      const post = await prisma.posts.findUnique({
+        where: { id: numericId },
+        include: {
+          // Adjust "user" to your relation field name if different
+          user: { select: { name: true } },
+        },
+      });
       if (!post) {
         return res.status(404).send("Not found");
       }
 
-      await redis.setEx(key, POSTS_TTL_SECONDS, JSON.stringify(post));
-      res.json(post);
+      const shaped = { ...post, userName: post.user?.name ?? null };
+
+      await redis.setEx(key, POSTS_TTL_SECONDS, JSON.stringify(shaped));
+      res.json(shaped);
     } catch (err) {
       next(err);
     }
