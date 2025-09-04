@@ -28,7 +28,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setLoading(true);
     try {
       // Always include credentials so the backend receives our auth cookie
-      const res = await fetch(`${import.meta.env.VITE_API_TS_URL}/api/me`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/me`, {
         method: "GET",
         credentials: "include",
       });
@@ -48,7 +48,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const logout = async () => {
-    await fetch(`${import.meta.env.VITE_API_TS_URL}/api/logout`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/api/logout`, {
       method: "POST",
       credentials: "include",
     });

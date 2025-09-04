@@ -23,6 +23,9 @@ export default function Header() {
       )}
       {userId !== undefined && (
         <nav>
+                                <a class="hf-link" href="/dashboard">
+                                  <strong>Kunnátt Lite</strong>
+                                </a>
           <div class="hf-link">ID: {userId}</div>
           <a class="hf-link" href="/posts">
             View posts

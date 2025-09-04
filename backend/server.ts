@@ -248,4 +248,8 @@ app_ts.get(
   },
 );
 
+app_ts.post("/api/logout", (req, res) => {
+  res.clearCookie("token", COOKIE_OPTS).send("Logged out");
+});
+
 httpServer.listen(8000);

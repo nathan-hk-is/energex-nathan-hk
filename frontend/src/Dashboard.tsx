@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import { useAuth } from "./AuthProvider";
 
 export default function Dashboard() {
-  const { userId, name } = useAuth();
+  const { userId, name, email } = useAuth();
   return (
     <div>
       <h1>Kunnátt Lite</h1>
@@ -10,7 +10,7 @@ export default function Dashboard() {
         This is my test project for Energex AI, presented as a lite version of
         my app Kunnátt. - Nathan HK
       </p>
-      {userId ? <p>Logged in as: {name}</p> : <p>Not logged in</p>}
+          {userId ? <p>Logged in as: {name}, {email}</p> : <p>Not logged in</p>}
       {userId ? (
         <ul>
           <li>

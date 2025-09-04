@@ -12,7 +12,7 @@ import { useAuth } from "./AuthProvider";
 
 export async function sendPost(title, content) {
   /* Update TypeScript backend with new message */
-  const res = await fetch(`${import.meta.env.VITE_API_TS_URL}/api/posts`, {
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/posts`, {
     method: "POST",
     credentials: "include",
     headers: { "Content-Type": "application/json" },
@@ -26,32 +26,34 @@ export default function WritePost() {
   /* Compose a regular text message */
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const inputRef1 = useRef<HTMLInputElement>(null);
-  const inputRef2 = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+    const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    sendPost(trimmed);
+    sendPost(title, content);
+      navigate("/posts", { replace: true });
   };
+    const addDisabled = (!title || !content);
 
   return (
     <form className="message-composer" onSubmit={handleSubmit}>
       <input
-        ref={inputRef1}
+        ref={inputRef}
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         placeholder="Title"
       />
-      <input
-        ref={inputRef2}
-        type="text"
+          <br/>
+      <textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Content"
       />
+          <br/>
       <button class="btn-big" type="submit" disabled={addDisabled}>
-        {t("message.send_btn")}
+        Post
       </button>
     </form>
   );
