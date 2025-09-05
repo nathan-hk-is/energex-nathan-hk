@@ -59,10 +59,7 @@ redis.on("error", (err) => console.error("[redis] error", err));
   }
 })();
 
-const POSTS_ALL_KEY = "posts:all";
-const postKey = (id: number | string) => `posts:id:${id}`;
-const POSTS_TTL_SECONDS = 60; // adjust as needed
-// --- end Redis cache setup ---
+import { POSTS_ALL_KEY, postKey, POSTS_TTL_SECONDS } from "./utils";
 
 function asyncWrap<T extends express.RequestHandler>(fn: T): T {
   // tiny helper so thrown promises go to next(err)
