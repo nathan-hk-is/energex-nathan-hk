@@ -78,7 +78,7 @@ function asyncWrap<T extends express.RequestHandler>(fn: T): T {
 
 app_ts.post(
   "/api/register",
-  asyncWrap(async (req, res) => {
+  asyncWrap(async (req: Request, res: Response) => {
     const { name, email, password } = req.body as {
       name: string;
       email: string;
@@ -96,7 +96,7 @@ app_ts.post(
   }),
 );
 
-app_ts.post("/api/login", async (req, res) => {
+app_ts.post("/api/login", async (req: Request, res: Response) => {
   const { email, password } = req.body as {
     email: string;
     password: string;
@@ -154,7 +154,7 @@ const auth = (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-app_ts.get("/api/me", auth, (req, res) => {
+app_ts.get("/api/me", auth, (req: Request, res: Response) => {
   console.log("api me");
   res.json({
     userId: (req as any).user.sub,
@@ -245,9 +245,8 @@ app_ts.get(
       if (cached) {
         return res.json(JSON.parse(cached));
       }
-
       const post = await prisma.posts.findUnique({
-        where: { id: numericId },
+        where: { id: id },
         include: {
           // Adjust "user" to your relation field name if different
           user: { select: { name: true } },
@@ -267,7 +266,7 @@ app_ts.get(
   },
 );
 
-app_ts.post("/api/logout", (req, res) => {
+app_ts.post("/api/logout", (req: Request, res: Response) => {
   res.clearCookie("token", COOKIE_OPTS).send("Logged out");
 });
 
