@@ -68,7 +68,7 @@ export const LoginForm = () => {
   return (
     <div>
       <h1>Login</h1>
-      <form class="login-form" onSubmit={submit}>
+      <form className="login-form" onSubmit={submit}>
         <label>Email</label>
         <input
           value={email}
@@ -85,14 +85,14 @@ export const LoginForm = () => {
         />
         <div />
         <button
-          class="btn-big"
+          className="btn-big"
           type="submit"
           disabled={email === "" || pw === ""}
         >
           Login
         </button>
         {err && (
-          <a class="btn-big" href="/newlogin">
+          <a className="btn-big" href="/newlogin">
             Register
           </a>
         )}
@@ -204,11 +204,11 @@ export const LogoutForm = () => {
   return (
     <div>
       <h1>Logout</h1>
-      <form class="login-form" onSubmit={submit}>
-        <button class="btn-big" type="submit">
+      <form className="login-form" onSubmit={submit}>
+        <button className="btn-big" type="submit">
           Logout
         </button>
-        {err && <p class="red-err">{err}</p>}
+        {err && <p className="red-err">{err}</p>}
       </form>
     </div>
   );

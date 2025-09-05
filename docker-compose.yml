@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: mysql://root:password@mysql:3306/energex
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: supersecret
+      CORS_ORIGIN: http://localhost:5173
+    depends_on:
+      - mysql
+      - redis
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:8000
+    depends_on:
+      - backend
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: energex
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  redis:
+    image: redis:7
+    restart: always
+    ports:
+      - "6379:6379"
+volumes:
+  mysql-data:

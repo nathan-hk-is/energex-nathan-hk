@@ -7,33 +7,33 @@ export default function Header() {
     <header>
       {userId === undefined && (
         <nav>
-          <a class="hf-link" href="/dashboard">
+          <a className="hf-link" href="/dashboard">
             <strong>Kunnátt Lite</strong>
           </a>
-          <a class="hf-link" href="/login">
+          <a className="hf-link" href="/login">
             Login
           </a>
-          <a class="hf-link" href="/newlogin">
+          <a className="hf-link" href="/newlogin">
             Register
           </a>
-          <a class="hf-link" href="/posts">
+          <a className="hf-link" href="/posts">
             View posts
           </a>
         </nav>
       )}
       {userId !== undefined && (
         <nav>
-          <a class="hf-link" href="/dashboard">
+          <a className="hf-link" href="/dashboard">
             <strong>Kunnátt Lite</strong>
           </a>
-          <div class="hf-link">ID: {userId}</div>
-          <a class="hf-link" href="/posts">
+          <div className="hf-link">ID: {userId}</div>
+          <a className="hf-link" href="/posts">
             View posts
           </a>
-          <a class="hf-link" href="/write">
+          <a className="hf-link" href="/write">
             Write post
           </a>
-          <a class="hf-link" href="/logout">
+          <a className="hf-link" href="/logout">
             Logout
           </a>
         </nav>

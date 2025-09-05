@@ -52,7 +52,7 @@ export default function WritePost() {
         placeholder="Content"
       />
       <br />
-      <button class="btn-big" type="submit" disabled={addDisabled}>
+      <button className="btn-big" type="submit" disabled={addDisabled}>
         Post
       </button>
     </form>
